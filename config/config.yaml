@@ -1,132 +1,152 @@
-board: MKS DLC32 2.1
-name: Build Brighton ISEL GMF4433 CNC Machine
-
+board: MKS DLC32 2.0
+name: MKS DLC32 XYZ
+meta: (16/01/2023)
 stepping:
-  engine: I2S_STREAM
-  idle_ms: 250
+  engine: I2S_stream
+  idle_ms: 255
   pulse_us: 4
-  dir_delay_us: 8
-  disable_delay_us: 8
-
+  dir_delay_us: 5
+  disable_delay_us: 0
+  segments: 6
 axes:
   shared_stepper_disable_pin: I2SO.0
   x:
-    steps_per_mm: 100.000
+    steps_per_mm: 1280.000
     max_rate_mm_per_min: 5000.000
     acceleration_mm_per_sec2: 50.000
     max_travel_mm: 300.000
     soft_limits: false
-
     homing:
       cycle: 2
+      allow_single_axis: true
       positive_direction: false
       mpos_mm: 0.000
-      feed_mm_per_min: 50.000
-      seek_mm_per_min: 200.000
-      settle_ms: 200
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 800.000
+      settle_ms: 500
       seek_scaler: 1.100
       feed_scaler: 1.100
-
     motor0:
-#      limit_neg_pin: NO_PIN
-#      limit_pos_pin: NO_PIN
-#      limit_all_pin: gpio.36
-      hard_limits: false
+      limit_all_pin: gpio.36
+      hard_limits: true
       pulloff_mm: 1.000
       standard_stepper:
-        step_pin:  I2SO.1:low
+        step_pin: I2SO.1
         direction_pin: I2SO.2
-
   y:
-    steps_per_mm: 100.000
+    steps_per_mm: 1280.000
     max_rate_mm_per_min: 5000.000
     acceleration_mm_per_sec2: 50.000
     max_travel_mm: 300.000
     soft_limits: false
     homing:
       cycle: 3
-      positive_direction: true
+      allow_single_axis: true
+      positive_direction: false
       mpos_mm: 0.000
-      feed_mm_per_min: 50.000
+      feed_mm_per_min: 100.000
       seek_mm_per_min: 200.000
-      settle_ms: 200
+      settle_ms: 500
       seek_scaler: 1.100
       feed_scaler: 1.100
-
     motor0:
-#      limit_neg_pin: NO_PIN
-#      limit_pos_pin: NO_PIN
-#      limit_all_pin: gpio.35
-      hard_limits: false
+      limit_all_pin: gpio.35
+      hard_limits: true
       pulloff_mm: 1.000
       standard_stepper:
-        step_pin: I2SO.5:low
+        step_pin: I2SO.5
         direction_pin: I2SO.6
-
   z:
-    steps_per_mm: 100.000
+    steps_per_mm: 1280.000
     max_rate_mm_per_min: 5000.000
     acceleration_mm_per_sec2: 50.000
     max_travel_mm: 300.000
     soft_limits: false
     homing:
       cycle: 1
+      allow_single_axis: true
       positive_direction: true
       mpos_mm: 0.000
       feed_mm_per_min: 100.000
-      seek_mm_per_min: 200.000
-      settle_ms: 200
+      seek_mm_per_min: 800.000
+      settle_ms: 500
       seek_scaler: 1.100
       feed_scaler: 1.100
-
     motor0:
-#      limit_neg_pin: NO_PIN
-#      limit_pos_pin: NO_PIN
-#      limit_all_pin: gpio.34
-      hard_limits: false
+      limit_all_pin: gpio.34
+      hard_limits: true
       pulloff_mm: 1.000
       standard_stepper:
-        step_pin: I2SO.3:low
+        step_pin: I2SO.3
         direction_pin: I2SO.4
-
+kinematics:
+  Cartesian:
 i2so:
   bck_pin: gpio.16
   data_pin: gpio.21
   ws_pin: gpio.17
-
 spi:
   miso_pin: gpio.12
   mosi_pin: gpio.13
   sck_pin: gpio.14
-
 sdcard:
-  card_detect_pin: NO_PIN
   cs_pin: gpio.15
-
+  card_detect_pin: NO_PIN
+control:
+  safety_door_pin: NO_PIN
+  reset_pin: NO_PIN
+  feed_hold_pin: NO_PIN
+  cycle_start_pin: NO_PIN
+  macro0_pin: NO_PIN
+  macro1_pin: NO_PIN
+  macro2_pin: NO_PIN
+  macro3_pin: NO_PIN
+coolant:
+  flood_pin: NO_PIN
+  mist_pin: NO_PIN
+  delay_ms: 0
 probe:
   pin: gpio.2
   check_mode_start: true
-
+macros:
+  startup_line0: 
+  startup_line1: 
+  macro0: 
+  macro1: 
+  macro2: 
+  macro3: 
 start:
   must_home: false
-
-#Huanyang:
-#  uart:
-#    txd_pin: gpio.10
-#    rxd_pin: gpio.9
-#    baud: 9600
-#    mode: 8N1
-#  modbus_id: 1
-#  tool_num: 0
-#  speed_map: 0=0% 0=25% 6000=25% 24000=100%
-
-#PWM:
-#  pwm_hz: 5000
-#  output_pin: gpio.22
-#  direction_pin: NO_PIN
-#  disable_with_s0: false
-#  s0_with_disable: true
-#  spinup_ms: 1000
-#  spindown_ms: 1000
-#  tool_num: 0
-#  speed_map: 0=0.000% 12000=100.000%
+  deactivate_parking: false
+  check_limits: false
+user_outputs:
+  analog0_pin: NO_PIN
+  analog1_pin: NO_PIN
+  analog2_pin: NO_PIN
+  analog3_pin: NO_PIN
+  analog0_hz: 5000
+  analog1_hz: 5000
+  analog2_hz: 5000
+  analog3_hz: 5000
+  digital0_pin: NO_PIN
+  digital1_pin: NO_PIN
+  digital2_pin: NO_PIN
+  digital3_pin: NO_PIN
+arc_tolerance_mm: 0.002
+junction_deviation_mm: 0.010
+verbose_errors: false
+report_inches: false
+enable_parking_override_control: false
+use_line_numbers: false
+planner_blocks: 16
+Huanyang:
+  uart:
+    txd_pin: gpio.25
+    rxd_pin: gpio.33
+    rts_pin: NO_PIN
+    baud: 9600
+    mode: 8N1
+  modbus_id: 1
+  tool_num: 0
+  speed_map: 0=0% 0=25% 6000=25% 24000=100%
+  

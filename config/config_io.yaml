@@ -1,6 +1,6 @@
 board: MKS DLC32 2.0
 name: MKS DLC32 XYZ
-meta: Home Macro (24/01/2023)
+meta: Buttons and Relays (24/01/2023)
 stepping:
   engine: I2S_stream
   idle_ms: 255
@@ -94,26 +94,26 @@ sdcard:
   card_detect_pin: NO_PIN
 control:
   safety_door_pin: NO_PIN
-  reset_pin: NO_PIN
-  feed_hold_pin: NO_PIN
-  cycle_start_pin: NO_PIN
-  macro0_pin: NO_PIN
+  reset_pin: gpio.18
+  feed_hold_pin: gpio.19
+  cycle_start_pin: gpio.23
+  macro0_pin: gpio.32
   macro1_pin: NO_PIN
   macro2_pin: NO_PIN
   macro3_pin: NO_PIN
 coolant:
-  flood_pin: NO_PIN
-  mist_pin: NO_PIN
-  delay_ms: 0
+  flood_pin: gpio.5
+  mist_pin: gpio.26
+  delay_ms: 50
 probe:
   pin: gpio.22
   check_mode_start: true
 macros:
   startup_line0: 
-  startup_line1: 
+  startup_line1:
 #HOME: retract, stop and move to location G28
   macro0: G90 G53 G0Z0 & M9 M5 & G28
-  macro1: 
+  macro1:
   macro2: 
   macro3: 
 start:
@@ -121,7 +121,8 @@ start:
   deactivate_parking: false
   check_limits: false
 user_outputs:
-  analog0_pin: NO_PIN
+#gpio.4 (LC/Spindle) has a high current open colelctor output on the MKS board
+  analog0_pin: gpio.4
   analog1_pin: NO_PIN
   analog2_pin: NO_PIN
   analog3_pin: NO_PIN
@@ -129,8 +130,9 @@ user_outputs:
   analog1_hz: 5000
   analog2_hz: 5000
   analog3_hz: 5000
-  digital0_pin: NO_PIN
-  digital1_pin: NO_PIN
+#i2so.7 (BEEPER) has a medium current open collector output on the mks board
+  digital0_pin: I2SO.7
+  digital1_pin: GPIO.27
   digital2_pin: NO_PIN
   digital3_pin: NO_PIN
 arc_tolerance_mm: 0.002

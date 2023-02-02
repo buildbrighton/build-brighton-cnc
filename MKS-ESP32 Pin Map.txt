@@ -1,0 +1,52 @@
+ESP32 gpio map for MKS-DLC32, plus Expander Board v0.7
+
+GPIO No.	MKS Net			Other			IO Expander
+gpio.0		I2C_SDA			BOOTMODE		Button 4 (optional)
+gpio.1		TXD				USB
+gpio.2		IO2				Blue LED
+gpio.3		RXD				USB
+gpio.4		I2C_SCL							RS485 TXD 
+gpio.5		LCD_EN							Relay 3
+gpio.6		Unusable		CLK
+gpio.7		Unusable		SD0
+gpio.8		Unusable		SD1
+gpio.9		Unusable		SD2
+gpio.10		Unusable		SD3
+gpio.11		Unusable		CMD
+gpio.12		SD_DO
+gpio.13		SD_DI
+gpio.14		SD_SCK
+gpio.15		SD_CS
+gpio.16		I2S_BCK
+gpio.17		I2S_WS
+gpio.18		LCD_SCK							Button 2
+gpio.19		LCD_MISO						Button 3
+gpio.20		n/c
+gpio.21		I2S_DATA
+gpio.22		PROBE
+gpio.23		LCD_MOSI						Button 1
+gpio.24		n/c
+gpio.25		LCD_CS							Relay 1
+gpio.26		LCD_TOUCH_CS					Relay 2
+gpio.27		LCD_RST							RS485 RTS
+gpio.28		n/c
+gpio.29		n/c
+gpio.30		n/c
+gpio.31		n/c
+gpio.32		LC								Button 5 (optional)
+gpio.33		LCD_RS							RS485 RXD
+gpio.34		Z-
+gpio.35		Y-
+gpio.36		X-				SENSOR_VP
+gpio.37		n/c
+gpio.38		n/c
+gpio.39		SD_DET(n/a)		SENSOR_VN
+
+i2so.0		#STEP_ENABLE
+i2so.1		X_STEP
+i2so.2		X_DIR
+i2so.3		Z_STEP
+i2so.4		Z_DIR
+i2so.5		Y_STEP
+i2so.6		Y_DIR
+i2so.7		BEEPER							Relay 4

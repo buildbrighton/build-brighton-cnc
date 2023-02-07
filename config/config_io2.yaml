@@ -1,6 +1,6 @@
 board: MKS DLC32 2.0
 name: MKS DLC32 XYZ
-meta: Buttons and Relays v0.6 (27/01/2023)
+meta: Tristate RS485 v0.7 (27/01/2023)
 stepping:
   engine: I2S_stream
   idle_ms: 255
@@ -97,7 +97,7 @@ control:
   reset_pin: gpio.18
   feed_hold_pin: gpio.19
   cycle_start_pin: gpio.23
-  macro0_pin: gpio.32
+  macro0_pin: NO_PIN
   macro1_pin: NO_PIN
   macro2_pin: NO_PIN
   macro3_pin: NO_PIN
@@ -121,8 +121,8 @@ start:
   deactivate_parking: false
   check_limits: false
 user_outputs:
-#gpio.4 (LC/Spindle) has a high current open collector output on the MKS board
-  analog0_pin: gpio.4
+#gpio.32 (LC/Spindle) has a high current open collector output on the MKS board
+  analog0_pin: gpio.32
   analog1_pin: NO_PIN
   analog2_pin: NO_PIN
   analog3_pin: NO_PIN
@@ -144,9 +144,9 @@ use_line_numbers: false
 planner_blocks: 16
 Huanyang:
   uart:
-    txd_pin: gpio.27
+    txd_pin: gpio.4
     rxd_pin: gpio.33
-    rts_pin: NO_PIN
+    rts_pin: gpio.27
     baud: 9600
     mode: 8N1
   modbus_id: 1

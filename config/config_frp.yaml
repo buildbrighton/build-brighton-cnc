@@ -1,0 +1,145 @@
+board: MKS DLC32 2.0
+name: MKS DLC32 XYZ
+meta: FOR/REV/PWM v0.9 (13/02/2023)
+stepping:
+  engine: I2S_stream
+  idle_ms: 255
+  pulse_us: 4
+  dir_delay_us: 5
+  disable_delay_us: 0
+  segments: 6
+axes:
+  shared_stepper_disable_pin: I2SO.0
+  x:
+    steps_per_mm: 1280.000
+    max_rate_mm_per_min: 2500.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 341.000
+    soft_limits: false
+    homing:
+      cycle: 2
+      allow_single_axis: true
+      positive_direction: false
+      mpos_mm: 0.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 1000.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+    motor0:
+      limit_all_pin: gpio.36
+      hard_limits: true
+      pulloff_mm: 0.5000
+      standard_stepper:
+        step_pin: I2SO.1
+        direction_pin: I2SO.2
+  y:
+    steps_per_mm: 1280.000
+    max_rate_mm_per_min: 2500.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 435.000
+    soft_limits: false
+    homing:
+      cycle: 3
+      allow_single_axis: true
+      positive_direction: true
+      mpos_mm: 435.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 1000.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+    motor0:
+      limit_all_pin: gpio.35
+      hard_limits: true
+      pulloff_mm: 0.5000
+      standard_stepper:
+        step_pin: I2SO.5
+        direction_pin: I2SO.6:low
+  z:
+    steps_per_mm: 1280.000
+    max_rate_mm_per_min: 2500.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 163.000
+    soft_limits: false
+    homing:
+      cycle: 1
+      allow_single_axis: true
+      positive_direction: true
+      mpos_mm: 0.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 1000.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+    motor0:
+      limit_all_pin: gpio.34
+      hard_limits: true
+      pulloff_mm: 0.5000
+      standard_stepper:
+        step_pin: I2SO.3
+        direction_pin: I2SO.4
+kinematics:
+  Cartesian:
+i2so:
+  bck_pin: gpio.16
+  data_pin: gpio.21
+  ws_pin: gpio.17
+spi:
+  miso_pin: gpio.12
+  mosi_pin: gpio.13
+  sck_pin: gpio.14
+sdcard:
+  cs_pin: gpio.15
+  card_detect_pin: gpio.39
+control:
+  safety_door_pin: gpio.4
+  reset_pin: gpio.23
+  feed_hold_pin: gpio.19
+  cycle_start_pin: gpio.18
+  macro0_pin: gpio.0
+coolant:
+  flood_pin: gpio.27
+  mist_pin: gpio.33
+  delay_ms: 500
+probe:
+  pin: gpio.22
+  check_mode_start: true
+macros:
+  startup_line0: 
+  startup_line1:
+#HOME: retract, stop and move to location G28
+  macro0: G90 G53 G0Z0 & M9 M5 & G28
+  macro1:
+  macro2: 
+  macro3: 
+start:
+  must_home: false
+  deactivate_parking: false
+  check_limits: false
+user_outputs:
+#gpio.32 (LC/Spindle) J7 800mA open collector output on the MKS-DLC32
+  analog0_pin: gpio.32
+  analog0_hz: 5000
+#i2so.7 (BEEPER) J4 500mA open collector output on the MKS-DLC32
+  digital0_pin: I2SO.7
+arc_tolerance_mm: 0.002
+junction_deviation_mm: 0.010
+verbose_errors: false
+report_inches: false
+enable_parking_override_control: false
+use_line_numbers: false
+planner_blocks: 16
+10V:
+  forward_pin: gpio.5
+  reverse_pin: gpio.26
+  pwm_hz: 5000
+  output_pin: gpio.25:low
+  disable_with_s0: false
+  s0_with_disable: true
+  spinup_ms: 15000
+  spindown_ms: 15000
+  tool_num: 0
+  speed_map: 0=0.000% 24000=100.000%
+  off_on_alarm: true
+  

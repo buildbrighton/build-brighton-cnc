@@ -1,12 +1,12 @@
-ESP32 gpio map for MKS-DLC32, plus Expander Board v0.7
+ESP32 gpio map for MKS-DLC32, plus Expander Board v0.9
 
-GPIO No.	MKS Net			Other			IO Expander
-gpio.0		I2C_SDA			BOOTMODE		Button 4 (optional)
+GPIO No.	MKS Net			Other			MKS Port	EXP Board	Function
+gpio.0		I2C_SDA			BOOTMODE		EXP2.4		SW4			MACRO
 gpio.1		TXD				USB
 gpio.2		IO2				Blue LED
 gpio.3		RXD				USB
-gpio.4		I2C_SCL							RS485 TXD 
-gpio.5		LCD_EN							Relay 3
+gpio.4		I2C_SCL							EXP2.5		SW5			DOOR/INTERLOCK 
+gpio.5		LCD_EN							EXP1.3		OC3			FORWARD
 gpio.6		Unusable		CLK
 gpio.7		Unusable		SD0
 gpio.8		Unusable		SD1
@@ -19,25 +19,25 @@ gpio.14		SD_SCK
 gpio.15		SD_CS
 gpio.16		I2S_BCK
 gpio.17		I2S_WS
-gpio.18		LCD_SCK							Button 2
-gpio.19		LCD_MISO						Button 3
+gpio.18		LCD_SCK							EXP2.2		SW2			CYCLE START
+gpio.19		LCD_MISO						EXP2.1		SW3			FEED_HOLD
 gpio.20		n/c
 gpio.21		I2S_DATA
-gpio.22		PROBE
-gpio.23		LCD_MOSI						Button 1
+gpio.22		PROBE							J12						PROBE
+gpio.23		LCD_MOSI						EXP2.6		SW1			RESET/ESTOP
 gpio.24		n/c
-gpio.25		LCD_CS							Relay 1
-gpio.26		LCD_TOUCH_CS					Relay 2
-gpio.27		LCD_RST							RS485 RTS
+gpio.25		LCD_CS							EXP1.7		OC1			PWM/SPEED
+gpio.26		LCD_TOUCH_CS					EXP1.5		OC2			REVERSE
+gpio.27		LCD_RST							EXP1.4		OC4			FLOOD/AIR
 gpio.28		n/c
 gpio.29		n/c
 gpio.30		n/c
 gpio.31		n/c
-gpio.32		LC								Button 5 (optional)
-gpio.33		LCD_RS							RS485 RXD
-gpio.34		Z-
-gpio.35		Y-
-gpio.36		X-				SENSOR_VP
+gpio.32		LC								J7			OC6			AUX1
+gpio.33		LCD_RS							EXP1.8		OC5			MIST
+gpio.34		Z-								J11						LIMIT_Z
+gpio.35		Y-								J10						LIMIT_Y
+gpio.36		X-				SENSOR_VP		J9						LIMIT_X
 gpio.37		n/c
 gpio.38		n/c
 gpio.39		SD_DET(n/a)		SENSOR_VN
@@ -49,4 +49,4 @@ i2so.3		Z_STEP
 i2so.4		Z_DIR
 i2so.5		Y_STEP
 i2so.6		Y_DIR
-i2so.7		BEEPER							Relay 4
+i2so.7		BEEPER							J4			OC7			AUX2

@@ -93,11 +93,13 @@ sdcard:
   cs_pin: gpio.15
   card_detect_pin: gpio.39
 control:
-  safety_door_pin: gpio.4
-  reset_pin: gpio.23
-  feed_hold_pin: gpio.19
-  cycle_start_pin: gpio.18
-  macro0_pin: gpio.0
+# reliability issues with gpio.0, and interlock wiring not ready yet
+# door interlock input disabled and gpio.4 reassigned to macro input
+  safety_door_pin: NO_PIN
+  reset_pin: gpio.23:high
+  feed_hold_pin: gpio.19:high
+  cycle_start_pin: gpio.18:low
+  macro0_pin: gpio.4:low
 coolant:
   flood_pin: gpio.27
   mist_pin: gpio.33
@@ -131,8 +133,8 @@ enable_parking_override_control: false
 use_line_numbers: false
 planner_blocks: 16
 10V:
-  forward_pin: gpio.5
-  reverse_pin: gpio.26
+  forward_pin: gpio.5:low
+  reverse_pin: gpio.26:high
   pwm_hz: 5000
   output_pin: gpio.25:low
   disable_with_s0: false

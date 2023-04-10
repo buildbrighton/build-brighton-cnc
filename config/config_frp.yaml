@@ -37,7 +37,7 @@ axes:
     steps_per_mm: 1280.000
     max_rate_mm_per_min: 2500.000
     acceleration_mm_per_sec2: 100.000
-    max_travel_mm: 435.000
+    max_travel_mm: 430.000
     soft_limits: false
     homing:
       cycle: 3
@@ -93,10 +93,13 @@ sdcard:
   cs_pin: gpio.15
   card_detect_pin: gpio.39
 control:
-# reliability issues with gpio.0, and interlock wiring not ready yet
-# door interlock input disabled and gpio.4 reassigned to macro input
+#gpio.0:high //gpio.0 does not seem to work.
+#sometimes, fluidnc will spam "MSG:INFO: Ceck door" and will not funcion until the door input is closed
+#sometimes, having te door input closed wil prevent fluidnc from booting at all.
+# door/inerlock will be disabled unil this is fully understood.
+#reset pin should be active high, but stupid chinese vfd uses NO output.
   safety_door_pin: NO_PIN
-  reset_pin: gpio.23:high
+  reset_pin: gpio.23:low
   feed_hold_pin: gpio.19:high
   cycle_start_pin: gpio.18:low
   macro0_pin: gpio.4:low
@@ -110,8 +113,8 @@ probe:
 macros:
   startup_line0: 
   startup_line1:
-#HOME: retract, stop and move to location G28
-  macro0: G90 G53 G0Z0 & M9 M5 & G28
+#HOME: retract, stop and move to location G30, probe z-height. Tool length offset is probe result minus probe position, which is -150mm (relative to spindle nose minus 20mm)
+  macro0: G53 G0Z0 & M9 M5 & G30 & M0 & G53 G38.2 Z-160 F200 & G53 G38.4 Z0 F10 & G53 G0 Z0
   macro1:
   macro2: 
   macro3: 
@@ -136,12 +139,13 @@ planner_blocks: 16
   forward_pin: gpio.5:low
   reverse_pin: gpio.26:high
   pwm_hz: 5000
-  output_pin: gpio.25:low
+#vfd programed to invert signal so that an open circuit sets zero speed
+  output_pin: gpio.25
   disable_with_s0: false
   s0_with_disable: true
   spinup_ms: 15000
   spindown_ms: 15000
   tool_num: 0
-  speed_map: 0=0.000% 24000=100.000%
+  speed_map: 0=0.000% 240=23.5% 24000=100.000%
   off_on_alarm: true
   

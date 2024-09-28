@@ -16,7 +16,7 @@ The machine is an ISEL 4433 with a FluidNC controller and a water cooled spindle
 The maximum coordinate volume of the machine is 440 x 330 x 160 mm.
 The water cooled spindle collides with the door, so the maximum usable depth is 430 mm
 The bed is about 300 mm wide.
-The X axis is from left to right, Y axis is from front to back, and Z axis is from top to bottom.
+The X axis is +ve from left to right, Y axis is +ve from front to back, and Z axis is -ve from top to bottom.
 
 #### Spindle
 

@@ -72,14 +72,14 @@ The control board is an MKS-ESP32. Connection to the controller is either by dir
 2. Affix you stock material to the bed. For thin sheet material, place a sacrificial block of material under your stock to protect the machine bed. NEVER CUT DIRECTLY ON THE BED. Bar clamps can be used to hold the stock and sacrifical layer to the bed. Bar clamps must have roughly equal height material on both sides of the bolt to function correctly. For thicker and smaller peices, use the clamp/support blocks fixed to the near left corner. The cam grip should be on the right hand side so that its clamping force does not cause it to slide along the T slot. Use shim blocks if the stock doesnt reach the clamp. Make sure that your stock has enough clearance at the edges so as not to cut into the blocks.
 
 3. Change the tool. 
-  1. Press the white button on the left hand side. The machine will move the spindle over the tool height probe.
-  2. Open the door and use an 18 and 22 mm spanner to remove the collet nut.
-  3. Replace the collet with the correct size for your tool. The tool can be up to approx 10% smaller than the collet size and still work.
-  4. Insert the collet into the nut *first*, then insert the tool, making sure that the shank of the tool reaches the rear of the collet's gipping surface.
-  5. Thread the nut back on to the spindle until finger tight. Use the spanners with *reasonable* force to securely tighten the nut.
-  6. **Close the door** and press the *'Start'* button. The machine will move down until the tool touches the tool height probe.
-  7. Read the second tool probe Z position. Subtract from 150. Enter the command *'G43.1.Z{result}'* replacing *{result}* with the value just calcuated. eg, probe return -124.5, value entered is 150 - 124.5 = 25.5
-  8. Validate the tool height offset with the command *'$#'* and check that TLO matches the value entered.
+     1. Press the white button on the left hand side. The machine will move the spindle over the tool height probe.
+     2. Open the door and use an 18 and 22 mm spanner to remove the collet nut.
+     3. Replace the collet with the correct size for your tool. The tool can be up to approx 10% smaller than the collet size and still work.
+     4. Insert the collet into the nut *first*, then insert the tool, making sure that the shank of the tool reaches the rear of the collet's gipping surface.
+     5. Thread the nut back on to the spindle until finger tight. Use the spanners with *reasonable* force to securely tighten the nut.
+     6. **Close the door** and press the *'Start'* button. The machine will move down until the tool touches the tool height probe.
+     7. Read the second tool probe Z position. Subtract from 150. Enter the command *'G43.1.Z{result}'* replacing *{result}* with the value just calcuated. eg, probe return -124.5, value entered is 150 - 124.5 = 25.5
+     8. Validate the tool height offset with the command *'$#'* and check that TLO matches the value entered.
 
 4. Locate the stock. This can be done by eye, or by gently jogging the tool (with the spindle running) into the stock untill it starts cutting. There is also a set of wigglers in the red toolchest in the metal shop that can do the same without cutting into the stock, and is potentially more accurate. Wigglers require an extra tool change. Generally, either the top centre or top near left corner are used for location.
 

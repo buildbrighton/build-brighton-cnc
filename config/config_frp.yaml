@@ -114,7 +114,7 @@ macros:
   startup_line0: 
   startup_line1:
 #HOME: retract, stop and move to location G30, probe z-height. Tool length offset is probe result minus probe position, which is -150mm (relative to spindle nose minus 20mm)
-  macro0: G53 G0Z0 & M9 M5 & G30 & M0 & G53 G38.2 Z-160 F200 & G53 G38.4 Z0 F10 & G53 G0 Z0
+  macro0: G53 G0Z0 & M9 M5 & G30 & M0 & G53 G38.2 Z-160 F200 & G53 G38.4 Z0 F10 & G43.1 Z[150+#5063] & G53 G0 Z0
   macro1:
   macro2: 
   macro3: 

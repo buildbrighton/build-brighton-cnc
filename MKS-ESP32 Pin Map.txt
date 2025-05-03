@@ -1,12 +1,12 @@
 ESP32 gpio map for MKS-DLC32, plus Expander Board v0.9
 
 GPIO No.	MKS Net			Other			MKS Port	EXP Board	Function
-gpio.0		I2C_SDA			BOOTMODE		EXP2.4		SW4			MACRO
+gpio.0		I2C_SDA			BOOTMODE		EXP2.4		SW4			*MACRO
 gpio.1		TXD				USB
 gpio.2		IO2				Blue LED
 gpio.3		RXD				USB
-gpio.4		I2C_SCL							EXP2.5		SW5			DOOR/INTERLOCK 
-gpio.5		LCD_EN							EXP1.3		OC3			FORWARD
+gpio.4		I2C_SCL							EXP2.5		SW5			*DOOR/INTERLOCK 
+gpio.5		LCD_EN							EXP1.3		OP1			FORWARD
 gpio.6		Unusable		CLK
 gpio.7		Unusable		SD0
 gpio.8		Unusable		SD1
@@ -26,14 +26,14 @@ gpio.21		I2S_DATA
 gpio.22		PROBE							J12						PROBE
 gpio.23		LCD_MOSI						EXP2.6		SW1			RESET/ESTOP
 gpio.24		n/c
-gpio.25		LCD_CS							EXP1.7		OC1			PWM/SPEED
-gpio.26		LCD_TOUCH_CS					EXP1.5		OC2			REVERSE
+gpio.25		LCD_CS							EXP1.7		OP0			AUX
+gpio.26		LCD_TOUCH_CS					EXP1.5		OP2			REVERSE
 gpio.27		LCD_RST							EXP1.4		OC4			FLOOD/AIR
 gpio.28		n/c
 gpio.29		n/c
 gpio.30		n/c
 gpio.31		n/c
-gpio.32		LC								J7			OC6			AUX1
+gpio.32		LC								J7			OC6			**AUX2
 gpio.33		LCD_RS							EXP1.8		OC5			MIST
 gpio.34		Z-								J11						LIMIT_Z
 gpio.35		Y-								J10						LIMIT_Y
@@ -49,4 +49,7 @@ i2so.3		Z_STEP
 i2so.4		Z_DIR
 i2so.5		Y_STEP
 i2so.6		Y_DIR
-i2so.7		BEEPER							J4			OC7			AUX2
+i2so.7		BEEPER							J4			OP3			PWM/SPEED
+
+* MACRO is currently on GPIO4. DOOR_SAFETY and GPIO0 are not used. See Issue #14
+** Check if this is actually wired onto the EXP1 header

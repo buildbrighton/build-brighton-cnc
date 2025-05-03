@@ -1,6 +1,6 @@
 board: MKS DLC32 2.0
 name: MKS DLC32 XYZ
-meta: FOR/REV/PWM v0.9 (13/02/2023)
+meta: FOR/REV/PWM v1.0 (03/05/2025)
 stepping:
   engine: I2S_stream
   idle_ms: 255
@@ -127,7 +127,7 @@ user_outputs:
   analog0_pin: gpio.32
   analog0_hz: 5000
 #i2so.7 (BEEPER) J4 500mA open collector output on the MKS-DLC32
-  digital0_pin: I2SO.7
+  digital0_pin: gpio.25
 arc_tolerance_mm: 0.002
 junction_deviation_mm: 0.010
 verbose_errors: false
@@ -140,7 +140,7 @@ planner_blocks: 16
   reverse_pin: gpio.26:high
   pwm_hz: 5000
 #vfd programed to invert signal so that an open circuit sets zero speed
-  output_pin: gpio.25
+  output_pin: I2SO.7
   disable_with_s0: false
   s0_with_disable: true
   spinup_ms: 15000
